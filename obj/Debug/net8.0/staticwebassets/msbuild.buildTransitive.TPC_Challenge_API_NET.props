@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\TPC_Challenge_API_NET.props" />
+</Project>

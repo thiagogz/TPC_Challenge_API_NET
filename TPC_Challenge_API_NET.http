@@ -1,0 +1,6 @@
+@TPC_Challenge_API_NET_HostAddress = http://localhost:5109
+
+GET {{TPC_Challenge_API_NET_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
