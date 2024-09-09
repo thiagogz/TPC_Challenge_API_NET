@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TPC_Challenge_API_NET")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+164b4cf56d84366b62a16e378d6b44350fd0105a")]
 [assembly: System.Reflection.AssemblyProductAttribute("TPC_Challenge_API_NET")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TPC_Challenge_API_NET")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
