@@ -1,0 +1,455 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TPC_Challenge_API_NET</name>
+    </assembly>
+    <members>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CampanhaController.GetCampanhas">
+            <summary>
+            Retorna a tabela completa de campanhas
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CampanhaController.GetCampanha(System.Decimal)">
+            <summary>
+            Retorna a campanha com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CampanhaController.CreateCampanha(TPC_Challenge_API_NET.Models.TbCampanha)">
+            <summary>
+            Inserção de uma nova campanha
+            </summary>
+            <response code="201">Retorna a campanha criada</response>
+            <response code="400">Se o Request for enviado nulo</response>
+            <response code="500">Se houver algum erro no banco de dados</response>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CampanhaController.UpdateCampanha(System.Decimal,TPC_Challenge_API_NET.Models.TbCampanha)">
+            <summary>
+            Altera a campanha com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CampanhaController.DeleteCampanha(System.Decimal)">
+            <summary>
+            Deleta a campanha com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CategoriaController.GetCategorias">
+            <summary>
+            Retorna a tabela completa de categorias
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CategoriaController.GetCategoria(System.Decimal)">
+            <summary>
+            Retorna a categoria com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CategoriaController.CreateCategoria(TPC_Challenge_API_NET.Models.TbCategoria)">
+            <summary>
+            Inserção de uma nova categoria
+            </summary>
+            <response code="201">Retorna a categoria criada</response>
+            <response code="400">Se o Request for enviado nulo</response>
+            <response code="500">Se houver algum erro no banco de dados</response>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CategoriaController.UpdateCategoria(System.Decimal,TPC_Challenge_API_NET.Models.TbCategoria)">
+            <summary>
+            Altera a categoria com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CategoriaController.DeleteCategoria(System.Decimal)">
+            <summary>
+            Deleta a categoria com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.ClusterController.GetClusters">
+            <summary>
+            Retorna a tabela completa de clusters
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.ClusterController.GetCluster(System.Decimal)">
+            <summary>
+            Retorna o cluster com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.ClusterController.CreateCluster(TPC_Challenge_API_NET.Models.TbCluster)">
+            <summary>
+            Inserção de um novo cluster
+            </summary>
+            <response code="201">Retorna o cluster criado</response>
+            <response code="400">Se o Request for enviado nulo</response>
+            <response code="500">Se houver algum erro no banco de dados</response>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.ClusterController.UpdateCluster(System.Decimal,TPC_Challenge_API_NET.Models.TbCluster)">
+            <summary>
+            Altera o cluster com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.ClusterController.DeleteCluster(System.Decimal)">
+            <summary>
+            Deleta o cluster com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CompraController.GetCompras">
+            <summary>
+            Retorna a tabela completa de compras
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CompraController.GetCompra(System.Decimal)">
+            <summary>
+            Retorna a compra com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CompraController.CreateCompra(TPC_Challenge_API_NET.Models.TbCompra)">
+            <summary>
+            Inserção de uma nova compra
+            </summary>
+            <response code="201">Retorna a compra criada</response>
+            <response code="400">Se o Request for enviado nulo</response>
+            <response code="500">Se houver algum erro no banco de dados</response>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CompraController.UpdateCompra(System.Decimal,TPC_Challenge_API_NET.Models.TbCompra)">
+            <summary>
+            Altera a compra com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CompraController.DeleteCompra(System.Decimal)">
+            <summary>
+            Deleta a compra com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CreditCompraController.GetCreditCompras">
+            <summary>
+            Retorna a tabela completa de relação entre créditos e compras
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CreditCompraController.GetCreditCompra(System.Decimal,System.Decimal)">
+            <summary>
+            Retorna a relação entre crédito e compra com o id especificado
+            </summary>
+            <remarks>
+            Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
+            </remarks>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CreditCompraController.CreateCreditCompra(TPC_Challenge_API_NET.Models.TbCreditCompra)">
+            <summary>
+            Inserção de uma nova relação entre crédito e compra
+            </summary>
+            <response code="201">Retorna a relação entre crédito e compra criada</response>
+            <response code="400">Se o Request for enviado nulo</response>
+            <response code="500">Se houver algum erro no banco de dados</response>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CreditCompraController.UpdateCreditCompra(System.Decimal,System.Decimal,TPC_Challenge_API_NET.Models.TbCreditCompra)">
+            <summary>
+            Altera a relação entre crédito e compra com o id especificado
+            </summary>
+            <remarks>
+            Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
+            </remarks>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CreditCompraController.DeleteCreditCompra(System.Decimal,System.Decimal)">
+            <summary>
+            Deleta a relação entre crédito e compra com o id especificado
+            </summary>
+            <remarks>
+            Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
+            </remarks>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CreditController.GetCredits">
+            <summary>
+            Retorna a tabela completa de créditos
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CreditController.GetCredit(System.Decimal)">
+            <summary>
+            Retorna o crédito com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CreditController.CreateCredit(TPC_Challenge_API_NET.Models.TbCredit)">
+            <summary>
+            Inserção de um novo crédito
+            </summary>
+            <response code="201">Retorna o crédito criado</response>
+            <response code="400">Se o Request for enviado nulo</response>
+            <response code="500">Se houver algum erro no banco de dados</response>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CreditController.UpdateCredit(System.Decimal,TPC_Challenge_API_NET.Models.TbCredit)">
+            <summary>
+            Altera o crédito com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.CreditController.DeleteCredit(System.Decimal)">
+            <summary>
+            Deleta o crédito com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.LojaController.GetLojas">
+            <summary>
+            Retorna a tabela completa de lojas
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.LojaController.GetLoja(System.Decimal)">
+            <summary>
+            Retorna a loja com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.LojaController.CreateLoja(TPC_Challenge_API_NET.Models.TbLoja)">
+            <summary>
+            Inserção de uma nova loja
+            </summary>
+            <response code="201">Retorna a loja criada</response>
+            <response code="400">Se o Request for enviado nulo</response>
+            <response code="500">Se houver algum erro no banco de dados</response>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.LojaController.UpdateLoja(System.Decimal,TPC_Challenge_API_NET.Models.TbLoja)">
+            <summary>
+            Altera a loja com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.LojaController.DeleteLoja(System.Decimal)">
+            <summary>
+            Deleta a loja com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.NotificacaoController.GetNotificacoes">
+            <summary>
+            Retorna a tabela completa de notificações
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.NotificacaoController.GetNotificacao(System.Decimal)">
+            <summary>
+            Retorna a notificação com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.NotificacaoController.CreateNotificacao(TPC_Challenge_API_NET.Models.TbNotificaco)">
+            <summary>
+            Inserção de uma nova notificação
+            </summary>
+            <response code="201">Retorna a notificação criada</response>
+            <response code="400">Se o Request for enviado nulo</response>
+            <response code="500">Se houver algum erro no banco de dados</response>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.NotificacaoController.UpdateNotificacao(System.Decimal,TPC_Challenge_API_NET.Models.TbNotificaco)">
+            <summary>
+            Altera a notificação com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.NotificacaoController.DeleteNotificacao(System.Decimal)">
+            <summary>
+            Deleta a notificação com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.PontosCompraController.GetPontosCompra">
+            <summary>
+            Retorna a tabela completa de relação entre pontos e compras
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.PontosCompraController.GetPontosCompra(System.Decimal,System.Decimal)">
+            <summary>
+            Retorna a relação entre ponto e compra com o id especificado
+            </summary>
+            <remarks>
+            Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
+            </remarks>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.PontosCompraController.CreatePontosCompra(TPC_Challenge_API_NET.Models.TbPontosCompra)">
+            <summary>
+            Inserção de uma nova relação entre crédito e compra
+            </summary>
+            <response code="201">Retorna a relação entre ponto e compra criada</response>
+            <response code="400">Se o Request for enviado nulo</response>
+            <response code="500">Se houver algum erro no banco de dados</response>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.PontosCompraController.UpdatePontosCompra(System.Decimal,System.Decimal,TPC_Challenge_API_NET.Models.TbPontosCompra)">
+            <summary>
+            Altera a relação entre ponto e compra com o id especificado
+            </summary>
+            <remarks>
+            Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
+            </remarks>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.PontosCompraController.DeletePontosCompra(System.Decimal,System.Decimal)">
+            <summary>
+            Deleta a relação entre crédito e compra com o id especificado
+            </summary>
+            <remarks>
+            Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
+            </remarks>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.PontoController.GetPontos">
+            <summary>
+            Retorna a tabela completa de pontos
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.PontoController.GetPonto(System.Decimal)">
+            <summary>
+            Retorna o ponto com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.PontoController.CreatePonto(TPC_Challenge_API_NET.Models.TbPonto)">
+            <summary>
+            Inserção de um novo ponto
+            </summary>
+            <response code="201">Retorna o ponto criado</response>
+            <response code="400">Se o Request for enviado nulo</response>
+            <response code="500">Se houver algum erro no banco de dados</response>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.PontoController.UpdatePonto(System.Decimal,TPC_Challenge_API_NET.Models.TbPonto)">
+            <summary>
+            Altera o ponto com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.PontoController.DeletePonto(System.Decimal)">
+            <summary>
+            Deleta o ponto com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.ProdutoController.GetProdutos">
+            <summary>
+            Retorna a tabela completa de produtos
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.ProdutoController.GetProduto(System.Decimal)">
+            <summary>
+            Retorna o produto com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.ProdutoController.CreateProduto(TPC_Challenge_API_NET.Models.TbProduto)">
+            <summary>
+            Inserção de um novo produto
+            </summary>
+            <response code="201">Retorna o produto criado</response>
+            <response code="400">Se o Request for enviado nulo</response>
+            <response code="500">Se houver algum erro no banco de dados</response>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.ProdutoController.UpdateProduto(System.Decimal,TPC_Challenge_API_NET.Models.TbProduto)">
+            <summary>
+            Altera o produto com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.ProdutoController.DeleteProduto(System.Decimal)">
+            <summary>
+            Deleta o produto com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UserClusterController.GetUserClusters">
+            <summary>
+            Retorna a tabela completa de relação entre usuários e clusteres
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UserClusterController.GetUserCluster(System.Decimal)">
+            <summary>
+            Retorna a relação entre usuário e cluster com o id especificado
+            </summary>
+            <remarks>
+            Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
+            </remarks>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UserClusterController.CreateUserCluster(TPC_Challenge_API_NET.Models.TbUserCluster)">
+            <summary>
+            Inserção de uma nova relação entre usuário e cluster
+            </summary>
+            <response code="201">Retorna a relação entre ponto e compra criada</response>
+            <response code="400">Se o Request for enviado nulo</response>
+            <response code="500">Se houver algum erro no banco de dados</response>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UserClusterController.UpdateUserCluster(System.Decimal,TPC_Challenge_API_NET.Models.TbUserCluster)">
+            <summary>
+            Altera a relação entre usuário e cluster com o id especificado
+            </summary>
+            <remarks>
+            Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
+            </remarks>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UserClusterController.DeleteUserCluster(System.Decimal)">
+            <summary>
+            Deleta a relação entre usuário e cluster com o id especificado
+            </summary>
+            <remarks>
+            Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
+            </remarks>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UserController.GetUsers">
+            <summary>
+            Retorna a tabela completa de usuários
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UserController.GetUser(System.Decimal)">
+            <summary>
+            Retorna o usuário com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UserController.CreateUser(TPC_Challenge_API_NET.Models.TbUser)">
+            <summary>
+            Inserção de um novo usuário
+            </summary>
+            <response code="201">Retorna o usuário criado</response>
+            <response code="400">Se o Request for enviado nulo</response>
+            <response code="500">Se houver algum erro no banco de dados</response>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UserController.UpdateUser(System.Decimal,TPC_Challenge_API_NET.Models.TbUser)">
+            <summary>
+            Altera o usuário com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UserController.DeleteUser(System.Decimal)">
+            <summary>
+            Deleta o usuário com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UsermasterController.GetUserMasters">
+            <summary>
+            Retorna a tabela completa de usermasters
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UsermasterController.GetUserMaster(System.Decimal)">
+            <summary>
+            Retorna o usermaster com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UsermasterController.CreateUserMaster(TPC_Challenge_API_NET.Models.TbUsermaster)">
+            <summary>
+            Inserção de um novo usermaster
+            </summary>
+            <response code="201">Retorna o usermaster criado</response>
+            <response code="400">Se o Request for enviado nulo</response>
+            <response code="500">Se houver algum erro no banco de dados</response>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UsermasterController.UpdateUserMaster(System.Decimal,TPC_Challenge_API_NET.Models.TbUsermaster)">
+            <summary>
+            Altera o usermaster com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UsermasterController.DeleteUserMaster(System.Decimal)">
+            <summary>
+            Deleta o usermaster com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UserPdvController.GetUserPdvs">
+            <summary>
+            Retorna a tabela completa de usuáriospdvs
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UserPdvController.GetUserPdv(System.Decimal)">
+            <summary>
+            Retorna o usuáriopdv com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UserPdvController.CreateUserPdv(TPC_Challenge_API_NET.Models.TbUserPdv)">
+            <summary>
+            Inserção de um novo usuáriopdv
+            </summary>
+            <response code="201">Retorna o usuáriopdv criado</response>
+            <response code="400">Se o Request for enviado nulo</response>
+            <response code="500">Se houver algum erro no banco de dados</response>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UserPdvController.UpdateUserPdv(System.Decimal,TPC_Challenge_API_NET.Models.TbUserPdv)">
+            <summary>
+            Altera o usuáriopdv com o id especificado
+            </summary>
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Controllers.UserPdvController.DeleteUserPdv(System.Decimal)">
+            <summary>
+            Deleta o usuáriopdv com o id especificado
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -15,6 +15,9 @@ namespace TPC_Challenge_API_NET.Controllers
             this.campanhaRepository = campanhaRepository;
         }
 
+        /// <summary>
+        /// Retorna a tabela completa de campanhas
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TbCampanha>>> GetCampanhas()
         {
@@ -28,6 +31,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna a campanha com o id especificado
+        /// </summary>
         [HttpGet("{id:decimal}")]
         public async Task<ActionResult<TbCampanha>> GetCampanha(decimal id)
         {
@@ -44,7 +50,16 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Inserção de uma nova campanha
+        /// </summary>
+        /// <response code="201">Retorna a campanha criada</response>
+        /// <response code="400">Se o Request for enviado nulo</response>
+        /// <response code="500">Se houver algum erro no banco de dados</response>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<TbCampanha>> CreateCampanha([FromBody] TbCampanha campanha)
         {
             try
@@ -61,6 +76,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Altera a campanha com o id especificado
+        /// </summary>
         [HttpPut("{id:decimal}")]
         public async Task<ActionResult<TbCampanha>> UpdateCampanha(decimal id, [FromBody] TbCampanha campanha)
         {
@@ -79,6 +97,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta a campanha com o id especificado
+        /// </summary>
         [HttpDelete("{id:decimal}")]
         public async Task<ActionResult<TbCampanha>> DeleteCampanha(decimal id)
         {

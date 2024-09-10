@@ -15,6 +15,9 @@ namespace TPC_Challenge_API_NET.Controllers
             this.compraRepository = compraRepository;
         }
 
+        /// <summary>
+        /// Retorna a tabela completa de compras
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TbCompra>>> GetCompras()
         {
@@ -28,6 +31,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna a compra com o id especificado
+        /// </summary>
         [HttpGet("{id:decimal}")]
         public async Task<ActionResult<TbCompra>> GetCompra(decimal id)
         {
@@ -44,7 +50,16 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Inserção de uma nova compra
+        /// </summary>
+        /// <response code="201">Retorna a compra criada</response>
+        /// <response code="400">Se o Request for enviado nulo</response>
+        /// <response code="500">Se houver algum erro no banco de dados</response>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<TbCompra>> CreateCompra([FromBody] TbCompra compra)
         {
             try
@@ -61,6 +76,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Altera a compra com o id especificado
+        /// </summary>
         [HttpPut("{id:decimal}")]
         public async Task<ActionResult<TbCompra>> UpdateCompra(decimal id, [FromBody] TbCompra compra)
         {
@@ -79,6 +97,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta a compra com o id especificado
+        /// </summary>
         [HttpDelete("{id:decimal}")]
         public async Task<ActionResult<TbCompra>> DeleteCompra(decimal id)
         {

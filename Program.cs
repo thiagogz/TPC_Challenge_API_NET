@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
 using TPC_Challenge_API_NET.Data;
 using TPC_Challenge_API_NET.Repository;
 using TPC_Challenge_API_NET.Repository.Interface;
@@ -29,7 +31,22 @@ builder.Services.AddScoped<IUserPdvRepository, UserPdvRepository>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(optopns =>
+{
+    optopns.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "LesSoft - A TPC Solution",
+        Description = "API desenvolvida pelo grupo Think, Plan & Code para manuseio de dados do aplicativo LesSoft",
+        Contact = new OpenApiContact
+        {
+            Name = "Think, Plan & Code",
+            Email = "thinkplancode@gmail.com.br"
+        }
+    });
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    optopns.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+});
 
 var app = builder.Build();
 

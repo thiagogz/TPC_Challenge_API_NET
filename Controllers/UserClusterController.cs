@@ -15,6 +15,9 @@ namespace TPC_Challenge_API_NET.Controllers
             this.userClusterRepository = userClusterRepository;
         }
 
+        /// <summary>
+        /// Retorna a tabela completa de relação entre usuários e clusteres
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TbUserCluster>>> GetUserClusters()
         {
@@ -28,6 +31,12 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna a relação entre usuário e cluster com o id especificado
+        /// </summary>
+        /// <remarks>
+        /// Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
+        /// </remarks>
         [HttpGet("{id:decimal}")]
         public async Task<ActionResult<TbUserCluster>> GetUserCluster(decimal id)
         {
@@ -44,7 +53,16 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Inserção de uma nova relação entre usuário e cluster
+        /// </summary>
+        /// <response code="201">Retorna a relação entre ponto e compra criada</response>
+        /// <response code="400">Se o Request for enviado nulo</response>
+        /// <response code="500">Se houver algum erro no banco de dados</response>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<TbUserCluster>> CreateUserCluster([FromBody] TbUserCluster userCluster)
         {
             try
@@ -61,6 +79,12 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Altera a relação entre usuário e cluster com o id especificado
+        /// </summary>
+        /// <remarks>
+        /// Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
+        /// </remarks>
         [HttpPut("{id:decimal}")]
         public async Task<ActionResult<TbUserCluster>> UpdateUserCluster(decimal id, [FromBody] TbUserCluster userCluster)
         {
@@ -79,6 +103,12 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta a relação entre usuário e cluster com o id especificado
+        /// </summary>
+        /// <remarks>
+        /// Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
+        /// </remarks>
         [HttpDelete("{id:decimal}")]
         public async Task<ActionResult<TbUserCluster>> DeleteUserCluster(decimal id)
         {

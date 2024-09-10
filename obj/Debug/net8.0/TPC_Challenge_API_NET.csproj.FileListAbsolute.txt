@@ -111,3 +111,6 @@ C:\Users\Thiago\source\repos\TPC_Challenge_API_NET\obj\Debug\net8.0\refint\TPC_C
 C:\Users\Thiago\source\repos\TPC_Challenge_API_NET\obj\Debug\net8.0\TPC_Challenge_API_NET.pdb
 C:\Users\Thiago\source\repos\TPC_Challenge_API_NET\obj\Debug\net8.0\TPC_Challenge_API_NET.genruntimeconfig.cache
 C:\Users\Thiago\source\repos\TPC_Challenge_API_NET\obj\Debug\net8.0\ref\TPC_Challenge_API_NET.dll
+C:\Users\Thiago\source\repos\TPC_Challenge_API_NET\bin\Debug\net8.0\TPC_Challenge_API_NET.xml
+C:\Users\Thiago\source\repos\TPC_Challenge_API_NET\obj\Debug\net8.0\TPC_Challenge_API_NET.sourcelink.json
+C:\Users\Thiago\source\repos\TPC_Challenge_API_NET\obj\Debug\net8.0\TPC_Challenge_API_NET.xml

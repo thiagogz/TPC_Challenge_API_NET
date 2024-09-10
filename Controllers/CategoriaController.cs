@@ -15,6 +15,9 @@ namespace TPC_Challenge_API_NET.Controllers
             this.categoriaRepository = categoriaRepository;
         }
 
+        /// <summary>
+        /// Retorna a tabela completa de categorias
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TbCategoria>>> GetCategorias()
         {
@@ -28,6 +31,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna a categoria com o id especificado
+        /// </summary>
         [HttpGet("{id:decimal}")]
         public async Task<ActionResult<TbCategoria>> GetCategoria(decimal id)
         {
@@ -44,7 +50,16 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Inserção de uma nova categoria
+        /// </summary>
+        /// <response code="201">Retorna a categoria criada</response>
+        /// <response code="400">Se o Request for enviado nulo</response>
+        /// <response code="500">Se houver algum erro no banco de dados</response>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<TbCategoria>> CreateCategoria([FromBody] TbCategoria categoria)
         {
             try
@@ -61,6 +76,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Altera a categoria com o id especificado
+        /// </summary>
         [HttpPut("{id:decimal}")]
         public async Task<ActionResult<TbCategoria>> UpdateCategoria(decimal id, [FromBody] TbCategoria categoria)
         {
@@ -79,6 +97,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta a categoria com o id especificado
+        /// </summary>
         [HttpDelete("{id:decimal}")]
         public async Task<ActionResult<TbCategoria>> DeleteCategoria(decimal id)
         {

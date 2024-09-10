@@ -15,6 +15,9 @@ namespace TPC_Challenge_API_NET.Controllers
             this.usermasterRepository = usermasterRepository;
         }
 
+        /// <summary>
+        /// Retorna a tabela completa de usermasters
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TbUsermaster>>> GetUserMasters()
         {
@@ -28,6 +31,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna o usermaster com o id especificado
+        /// </summary>
         [HttpGet("{id:decimal}")]
         public async Task<ActionResult<TbUsermaster>> GetUserMaster(decimal id)
         {
@@ -44,7 +50,16 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Inserção de um novo usermaster
+        /// </summary>
+        /// <response code="201">Retorna o usermaster criado</response>
+        /// <response code="400">Se o Request for enviado nulo</response>
+        /// <response code="500">Se houver algum erro no banco de dados</response>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<TbUsermaster>> CreateUserMaster([FromBody] TbUsermaster userMaster)
         {
             try
@@ -61,6 +76,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Altera o usermaster com o id especificado
+        /// </summary>
         [HttpPut("{id:decimal}")]
         public async Task<ActionResult<TbUsermaster>> UpdateUserMaster(decimal id, [FromBody] TbUsermaster userMaster)
         {
@@ -79,6 +97,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta o usermaster com o id especificado
+        /// </summary>
         [HttpDelete("{id:decimal}")]
         public async Task<ActionResult<TbUsermaster>> DeleteUserMaster(decimal id)
         {

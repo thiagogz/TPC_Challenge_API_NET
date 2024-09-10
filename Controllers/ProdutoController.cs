@@ -15,6 +15,9 @@ namespace TPC_Challenge_API_NET.Controllers
             this.produtoRepository = produtoRepository;
         }
 
+        /// <summary>
+        /// Retorna a tabela completa de produtos
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TbProduto>>> GetProdutos()
         {
@@ -28,6 +31,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna o produto com o id especificado
+        /// </summary>
         [HttpGet("{id:decimal}")]
         public async Task<ActionResult<TbProduto>> GetProduto(decimal id)
         {
@@ -44,7 +50,16 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Inserção de um novo produto
+        /// </summary>
+        /// <response code="201">Retorna o produto criado</response>
+        /// <response code="400">Se o Request for enviado nulo</response>
+        /// <response code="500">Se houver algum erro no banco de dados</response>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<TbProduto>> CreateProduto([FromBody] TbProduto produto)
         {
             try
@@ -61,6 +76,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Altera o produto com o id especificado
+        /// </summary>
         [HttpPut("{id:decimal}")]
         public async Task<ActionResult<TbProduto>> UpdateProduto(decimal id, [FromBody] TbProduto produto)
         {
@@ -79,6 +97,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta o produto com o id especificado
+        /// </summary>
         [HttpDelete("{id:decimal}")]
         public async Task<ActionResult<TbProduto>> DeleteProduto(decimal id)
         {

@@ -15,6 +15,9 @@ namespace TPC_Challenge_API_NET.Controllers
             this.creditRepository = creditRepository;
         }
 
+        /// <summary>
+        /// Retorna a tabela completa de créditos
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TbCredit>>> GetCredits()
         {
@@ -28,6 +31,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna o crédito com o id especificado
+        /// </summary>
         [HttpGet("{id:decimal}")]
         public async Task<ActionResult<TbCredit>> GetCredit(decimal id)
         {
@@ -44,7 +50,16 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Inserção de um novo crédito
+        /// </summary>
+        /// <response code="201">Retorna o crédito criado</response>
+        /// <response code="400">Se o Request for enviado nulo</response>
+        /// <response code="500">Se houver algum erro no banco de dados</response>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<TbCredit>> CreateCredit([FromBody] TbCredit credit)
         {
             try
@@ -61,6 +76,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Altera o crédito com o id especificado
+        /// </summary>
         [HttpPut("{id:decimal}")]
         public async Task<ActionResult<TbCredit>> UpdateCredit(decimal id, [FromBody] TbCredit credit)
         {
@@ -79,6 +97,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta o crédito com o id especificado
+        /// </summary>
         [HttpDelete("{id:decimal}")]
         public async Task<ActionResult<TbCredit>> DeleteCredit(decimal id)
         {

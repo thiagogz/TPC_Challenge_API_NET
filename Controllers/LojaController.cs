@@ -15,6 +15,9 @@ namespace TPC_Challenge_API_NET.Controllers
             this.lojaRepository = lojaRepository;
         }
 
+        /// <summary>
+        /// Retorna a tabela completa de lojas
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TbLoja>>> GetLojas()
         {
@@ -28,6 +31,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna a loja com o id especificado
+        /// </summary>
         [HttpGet("{id:decimal}")]
         public async Task<ActionResult<TbLoja>> GetLoja(decimal id)
         {
@@ -44,7 +50,16 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Inserção de uma nova loja
+        /// </summary>
+        /// <response code="201">Retorna a loja criada</response>
+        /// <response code="400">Se o Request for enviado nulo</response>
+        /// <response code="500">Se houver algum erro no banco de dados</response>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<TbLoja>> CreateLoja([FromBody] TbLoja loja)
         {
             try
@@ -61,6 +76,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Altera a loja com o id especificado
+        /// </summary>
         [HttpPut("{id:decimal}")]
         public async Task<ActionResult<TbLoja>> UpdateLoja(decimal id, [FromBody] TbLoja loja)
         {
@@ -79,6 +97,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta a loja com o id especificado
+        /// </summary>
         [HttpDelete("{id:decimal}")]
         public async Task<ActionResult<TbLoja>> DeleteLoja(decimal id)
         {

@@ -15,6 +15,9 @@ namespace TPC_Challenge_API_NET.Controllers
             this.userPdvRepository = userPdvRepository;
         }
 
+        /// <summary>
+        /// Retorna a tabela completa de usuáriospdvs
+        /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TbUserPdv>>> GetUserPdvs()
         {
@@ -28,6 +31,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna o usuáriopdv com o id especificado
+        /// </summary>
         [HttpGet("{id:decimal}")]
         public async Task<ActionResult<TbUserPdv>> GetUserPdv(decimal id)
         {
@@ -44,7 +50,16 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Inserção de um novo usuáriopdv
+        /// </summary>
+        /// <response code="201">Retorna o usuáriopdv criado</response>
+        /// <response code="400">Se o Request for enviado nulo</response>
+        /// <response code="500">Se houver algum erro no banco de dados</response>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<TbUserPdv>> CreateUserPdv([FromBody] TbUserPdv userPdv)
         {
             try
@@ -61,6 +76,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Altera o usuáriopdv com o id especificado
+        /// </summary>
         [HttpPut("{id:decimal}")]
         public async Task<ActionResult<TbUserPdv>> UpdateUserPdv(decimal id, [FromBody] TbUserPdv userPdv)
         {
@@ -79,6 +97,9 @@ namespace TPC_Challenge_API_NET.Controllers
             }
         }
 
+        /// <summary>
+        /// Deleta o usuáriopdv com o id especificado
+        /// </summary>
         [HttpDelete("{id:decimal}")]
         public async Task<ActionResult<TbUserPdv>> DeleteUserPdv(decimal id)
         {
