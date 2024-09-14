@@ -15,7 +15,6 @@ public partial class TbUserPdv
     public decimal Userpdvid { get; set; }
 
     [Column("PDVID", TypeName = "NUMBER(38)")]
-    [JsonIgnore]
     public decimal Pdvid { get; set; }
 
     [Column("NOME")]
@@ -48,5 +47,5 @@ public partial class TbUserPdv
 
     [ForeignKey("Pdvid")]
     [InverseProperty("TbUserPdvs")]
-    public virtual TbLoja Pdv { get; set; } = null!;
+    public virtual TbLoja? Pdv { get; set; }
 }

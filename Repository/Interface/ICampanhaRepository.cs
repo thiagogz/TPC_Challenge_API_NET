@@ -1,4 +1,5 @@
-﻿using TPC_Challenge_API_NET.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using TPC_Challenge_API_NET.Models;
 
 namespace TPC_Challenge_API_NET.Repository.Interface
 {
@@ -8,7 +9,7 @@ namespace TPC_Challenge_API_NET.Repository.Interface
         Task<TbCampanha> GetCampanha(decimal campanhaId);
         Task<TbCampanha> AddCampanha(TbCampanha campanha);
         Task<TbCampanha> UpdateCampanha(TbCampanha campanha);
-        void DeleteCampanha(decimal campanhaId);
+        Task DeleteCampanha(decimal campanhaId);
     }
 }
 

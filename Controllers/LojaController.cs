@@ -108,9 +108,9 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await lojaRepository.GetLoja(id);
                 if (result == null) return NotFound($"Loja com id = {id} não encontrada");
 
-                lojaRepository.DeleteLoja(id);
+                await lojaRepository.DeleteLoja(id);
 
-                return result;
+                return Ok("Loja deletada com sucesso.");
             }
             catch (Exception)
             {

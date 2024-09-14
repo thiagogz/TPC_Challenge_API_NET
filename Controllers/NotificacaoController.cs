@@ -108,9 +108,9 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await notificacaoRepository.GetNotificacao(id);
                 if (result == null) return NotFound($"Notificação com id = {id} não encontrada");
 
-                notificacaoRepository.DeleteNotificacao(id);
+                await notificacaoRepository.DeleteNotificacao(id);
 
-                return result;
+                return Ok("Notificação deletada com sucesso.");
             }
             catch (Exception)
             {

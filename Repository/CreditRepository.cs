@@ -48,7 +48,7 @@ namespace TPC_Challenge_API_NET.Repository
             return null;
         }
 
-        public async void DeleteCredit(decimal creditId)
+        public async Task DeleteCredit(decimal creditId)
         {
             var result = await dbContext.Credits.FirstOrDefaultAsync(c => c.Creditid == creditId);
             if (result != null)

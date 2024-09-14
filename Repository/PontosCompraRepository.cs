@@ -41,22 +41,30 @@ namespace TPC_Challenge_API_NET.Repository
             return result.Entity;
         }
 
-        public async Task<TbPontosCompra> UpdatePontosCompra(TbPontosCompra pontosCompra)
+        public async Task<TbPontosCompra> UpdatePontosCompra(decimal compraId, decimal pontoId, TbPontosCompra pontosCompra)
         {
             var result = await dbContext.PontosCompra
-                .FirstOrDefaultAsync(pc => pc.Compraid == pontosCompra.Compraid && pc.Pointid == pontosCompra.Pointid);
+                                        .FirstOrDefaultAsync(pc => pc.Compraid == compraId && pc.Pointid == pontoId);
+
             if (result != null)
             {
-                // Atualize os campos conforme necessário
-
+                dbContext.PontosCompra.Remove(result);
                 await dbContext.SaveChangesAsync();
 
+                result.Compraid = pontosCompra.Compraid;
+                result.Pointid = pontosCompra.Pointid;
+                result.Compra = pontosCompra.Compra;
+                result.Point = pontosCompra.Point;
+
+                dbContext.PontosCompra.Add(result);
+
+                await dbContext.SaveChangesAsync();
                 return result;
             }
             return null;
         }
 
-        public async void DeletePontosCompra(decimal compraId, decimal pontoId)
+        public async Task DeletePontosCompra(decimal compraId, decimal pontoId)
         {
             var result = await dbContext.PontosCompra
                 .FirstOrDefaultAsync(pc => pc.Compraid == compraId && pc.Pointid == pontoId);

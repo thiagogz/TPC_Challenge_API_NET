@@ -80,6 +80,8 @@ namespace TPC_Challenge_API_NET.Data
 
             modelBuilder.Entity<TbCreditCompra>(entity =>
             {
+                entity.HasKey(e => new { e.Creditid, e.Compraid });
+
                 entity.HasOne(d => d.Compra).WithMany()
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("TB_CREDIT_C_ID_COMPRASID_FK");
@@ -114,6 +116,8 @@ namespace TPC_Challenge_API_NET.Data
 
             modelBuilder.Entity<TbPontosCompra>(entity =>
             {
+                entity.HasKey(e => new { e.Compraid, e.Pointid });
+
                 entity.HasOne(d => d.Compra).WithMany()
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("TB_PONTOS_C_ID_COMPRASID_FK");

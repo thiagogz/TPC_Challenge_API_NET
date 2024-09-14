@@ -7,21 +7,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace TPC_Challenge_API_NET.Models;
 
-[Keyless]
 [Table("TB_CREDIT_COMPRAS")]
 public partial class TbCreditCompra
 {
+    [Key]
     [Column("CREDITID", TypeName = "NUMBER(38)")]
-    [JsonIgnore]
     public decimal Creditid { get; set; }
 
+    [Key]
     [Column("COMPRAID", TypeName = "NUMBER(38)")]
-    [JsonIgnore]
     public decimal Compraid { get; set; }
 
     [ForeignKey("Compraid")]
-    public virtual TbCompra Compra { get; set; } = null!;
+    public virtual TbCompra? Compra { get; set; }
 
     [ForeignKey("Creditid")]
-    public virtual TbCredit Credit { get; set; } = null!;
+    public virtual TbCredit? Credit { get; set; }
 }

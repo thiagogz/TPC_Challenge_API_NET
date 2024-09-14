@@ -44,8 +44,8 @@ namespace TPC_Challenge_API_NET.Repository
             {
                 result.Valor = compra.Valor;
                 result.Datacompra = compra.Datacompra;
-                result.Pdv = compra.Pdv;
-                result.Users = compra.Users;
+                result.Pdvid = compra.Pdvid;
+                result.Usersid = compra.Usersid;
 
                 await dbContext.SaveChangesAsync();
                 return result;
@@ -53,7 +53,7 @@ namespace TPC_Challenge_API_NET.Repository
             return null;
         }
 
-        public async void DeleteCompra(decimal compraId)
+        public async Task DeleteCompra(decimal compraId)
         {
             var result = await dbContext.Compras.FirstOrDefaultAsync(c => c.Compraid == compraId);
             if (result != null)

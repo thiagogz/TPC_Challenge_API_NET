@@ -31,5 +31,5 @@ public partial class TbNotificaco
 
     [ForeignKey("Pdvid")]
     [InverseProperty("TbNotificacos")]
-    public virtual TbLoja Pdv { get; set; } = null!;
+    public virtual TbLoja? Pdv { get; set; }
 }

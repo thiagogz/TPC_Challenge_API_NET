@@ -108,9 +108,9 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await categoriaRepository.GetCategoria(id);
                 if (result == null) return NotFound($"Categoria com id = {id} não encontrada");
 
-                categoriaRepository.DeleteCategoria(id);
+                await categoriaRepository.DeleteCategoria(id);
 
-                return Ok(result);
+                return Ok("Categoria deletada com sucesso.");
             }
             catch (Exception)
             {

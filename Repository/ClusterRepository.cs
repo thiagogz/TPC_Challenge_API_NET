@@ -46,7 +46,7 @@ namespace TPC_Challenge_API_NET.Repository
             return null;
         }
 
-        public async void DeleteCluster(decimal clusterId)
+        public async Task DeleteCluster(decimal clusterId)
         {
             var result = await dbContext.Clusters.FirstOrDefaultAsync(c => c.Clusterid == clusterId);
             if (result != null)

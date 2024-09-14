@@ -15,11 +15,9 @@ public partial class TbProduto
     public decimal Produtoid { get; set; }
 
     [Column("PDVID", TypeName = "NUMBER(38)")]
-    [JsonIgnore]
     public decimal Pdvid { get; set; }
 
     [Column("CATEGORIAID", TypeName = "NUMBER(38)")]
-    [JsonIgnore]
     public decimal Categoriaid { get; set; }
 
     [Column("NOME")]
@@ -42,9 +40,9 @@ public partial class TbProduto
 
     [ForeignKey("Categoriaid")]
     [InverseProperty("TbProdutos")]
-    public virtual TbCategoria Categoria { get; set; } = null!;
+    public virtual TbCategoria? Categoria { get; set; }
 
     [ForeignKey("Pdvid")]
     [InverseProperty("TbProdutos")]
-    public virtual TbLoja Pdv { get; set; } = null!;
+    public virtual TbLoja? Pdv { get; set; }
 }

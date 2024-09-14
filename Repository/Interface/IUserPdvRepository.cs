@@ -8,6 +8,6 @@ namespace TPC_Challenge_API_NET.Repository.Interface
         Task<TbUserPdv> GetUserPdv(decimal userPdvId);
         Task<TbUserPdv> AddUserPdv(TbUserPdv userPdv);
         Task<TbUserPdv> UpdateUserPdv(TbUserPdv userPdv);
-        void DeleteUserPdv(decimal userPdvId);
+        Task DeleteUserPdv(decimal userPdvId);
     }
 }

@@ -51,7 +51,7 @@ namespace TPC_Challenge_API_NET.Repository
             return null;
         }
 
-        public async void DeleteCategoria(decimal categoriaId)
+        public async Task DeleteCategoria(decimal categoriaId)
         {
             var result = await dbContext.Categorias.FirstOrDefaultAsync(c => c.Categoriaid == categoriaId);
             if (result != null)

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TPC_Challenge_API_NET.Models;
+using TPC_Challenge_API_NET.Repository;
 using TPC_Challenge_API_NET.Repository.Interface;
 
 namespace TPC_Challenge_API_NET.Controllers
@@ -90,13 +91,12 @@ namespace TPC_Challenge_API_NET.Controllers
         {
             try
             {
-                if (pontosCompra == null || pontosCompra.Compraid != compraId || pontosCompra.Pointid != pontoId)
-                    return BadRequest();
+                if (pontosCompra == null || pontosCompra.Compraid == null || pontosCompra.Pointid == null) return BadRequest();
 
                 var existingPontosCompra = await pontosCompraRepository.GetPontosCompraByIds(compraId, pontoId);
                 if (existingPontosCompra == null) return NotFound($"PontosCompra com compraId = {compraId} e pontoId = {pontoId} não encontrado");
 
-                return await pontosCompraRepository.UpdatePontosCompra(pontosCompra);
+                return await pontosCompraRepository.UpdatePontosCompra(compraId, pontoId, pontosCompra);
             }
             catch (Exception)
             {
@@ -118,9 +118,9 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await pontosCompraRepository.GetPontosCompraByIds(compraId, pontoId);
                 if (result == null) return NotFound($"PontosCompra com compraId = {compraId} e pontoId = {pontoId} não encontrado");
 
-                pontosCompraRepository.DeletePontosCompra(compraId, pontoId);
+                await pontosCompraRepository.DeletePontosCompra(compraId, pontoId);
 
-                return result;
+                return Ok("Relação entre pontos e compras deletada com sucesso.");
             }
             catch (Exception)
             {

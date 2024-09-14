@@ -15,11 +15,9 @@ public partial class TbCompra
     public decimal Compraid { get; set; }
 
     [Column("USERSID", TypeName = "NUMBER(38)")]
-    [JsonIgnore]
     public decimal Usersid { get; set; }
 
     [Column("PDVID", TypeName = "NUMBER(38)")]
-    [JsonIgnore]
     public decimal Pdvid { get; set; }
 
     [Column("VALOR", TypeName = "NUMBER(15,2)")]
@@ -30,9 +28,9 @@ public partial class TbCompra
 
     [ForeignKey("Pdvid")]
     [InverseProperty("TbCompras")]
-    public virtual TbLoja Pdv { get; set; } = null!;
+    public virtual TbLoja? Pdv { get; set; }
 
     [ForeignKey("Usersid")]
     [InverseProperty("TbCompras")]
-    public virtual TbUser Users { get; set; } = null!;
+    public virtual TbUser? Users { get; set; }
 }

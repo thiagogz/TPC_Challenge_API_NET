@@ -55,7 +55,7 @@ namespace TPC_Challenge_API_NET.Repository
             return null;
         }
 
-        public async void DeleteUserMaster(decimal masterId)
+        public async Task DeleteUserMaster(decimal masterId)
         {
             var result = await dbContext.UserMasters
                 .FirstOrDefaultAsync(um => um.Masterid == masterId);

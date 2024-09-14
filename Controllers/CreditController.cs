@@ -108,9 +108,9 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await creditRepository.GetCredit(id);
                 if (result == null) return NotFound($"Crédito com id = {id} não encontrado");
 
-                creditRepository.DeleteCredit(id);
+                await creditRepository.DeleteCredit(id);
 
-                return result;
+                return Ok("Crédito deletado com sucesso.");
             }
             catch (Exception)
             {

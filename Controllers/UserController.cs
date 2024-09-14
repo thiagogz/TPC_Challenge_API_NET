@@ -108,9 +108,9 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await userRepository.GetUser(id);
                 if (result == null) return NotFound($"Usuário com id = {id} não encontrado");
 
-                userRepository.DeleteUser(id);
+                await userRepository.DeleteUser(id);
 
-                return result;
+                return Ok("Usuário deletado com sucesso.");
             }
             catch (Exception)
             {

@@ -108,9 +108,9 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await usermasterRepository.GetUserMaster(id);
                 if (result == null) return NotFound($"UserMaster com id = {id} não encontrado");
 
-                usermasterRepository.DeleteUserMaster(id);
+                await usermasterRepository.DeleteUserMaster(id);
 
-                return result;
+                return Ok("Usuário master deletado com sucesso.");
             }
             catch (Exception)
             {

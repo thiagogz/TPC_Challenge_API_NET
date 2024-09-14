@@ -90,12 +90,12 @@ namespace TPC_Challenge_API_NET.Controllers
         {
             try
             {
-                if (creditCompra == null || creditCompra.Creditid != creditId || creditCompra.Compraid != compraId) return BadRequest();
+                if (creditCompra == null || creditCompra.Creditid == null || creditCompra.Compraid == null) return BadRequest();
 
                 var existingCreditCompra = await creditCompraRepository.GetCreditCompra(creditId, compraId);
                 if (existingCreditCompra == null) return NotFound($"Crédito com id = {creditId} e Compra com id = {compraId} não encontrado");
 
-                return await creditCompraRepository.UpdateCreditCompra(creditCompra);
+                return await creditCompraRepository.UpdateCreditCompra(creditId, compraId, creditCompra);
             }
             catch (Exception)
             {
@@ -117,9 +117,9 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await creditCompraRepository.GetCreditCompra(creditId, compraId);
                 if (result == null) return NotFound($"Crédito com id = {creditId} e Compra com id = {compraId} não encontrado");
 
-                creditCompraRepository.DeleteCreditCompra(creditId, compraId);
+                await creditCompraRepository.DeleteCreditCompra(creditId, compraId);
 
-                return result;
+                return Ok("Relação entre crédito e compra deletada com sucesso.");
             }
             catch (Exception)
             {

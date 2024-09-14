@@ -8,6 +8,6 @@ namespace TPC_Challenge_API_NET.Repository.Interface
         Task<TbCategoria> GetCategoria(decimal categoriaId);
         Task<TbCategoria> AddCategoria(TbCategoria categoria);
         Task<TbCategoria> UpdateCategoria(TbCategoria categoria);
-        void DeleteCategoria(decimal categoriaId);
+        Task DeleteCategoria(decimal categoriaId);
     }
 }

@@ -8,6 +8,6 @@ namespace TPC_Challenge_API_NET.Repository.Interface
         Task<TbLoja> GetLoja(decimal lojaId);
         Task<TbLoja> AddLoja(TbLoja loja);
         Task<TbLoja> UpdateLoja(TbLoja loja);
-        void DeleteLoja(decimal lojaId);
+        Task DeleteLoja(decimal lojaId);
     }
 }

@@ -8,6 +8,6 @@ namespace TPC_Challenge_API_NET.Repository.Interface
         Task<TbNotificaco> GetNotificacao(decimal notificacaoId);
         Task<TbNotificaco> AddNotificacao(TbNotificaco notificacao);
         Task<TbNotificaco> UpdateNotificacao(TbNotificaco notificacao);
-        void DeleteNotificacao(decimal notificacaoId);
+        Task DeleteNotificacao(decimal notificacaoId);
     }
 }

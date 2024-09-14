@@ -108,9 +108,9 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await userPdvRepository.GetUserPdv(id);
                 if (result == null) return NotFound($"UserPdv com id = {id} não encontrado");
 
-                userPdvRepository.DeleteUserPdv(id);
+                await userPdvRepository.DeleteUserPdv(id);
 
-                return result;
+                return Ok("Usuário PDV deletado com sucesso.");
             }
             catch (Exception)
             {

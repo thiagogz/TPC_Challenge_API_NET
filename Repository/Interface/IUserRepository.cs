@@ -8,6 +8,6 @@ namespace TPC_Challenge_API_NET.Repository.Interface
         Task<TbUser> GetUser(decimal userId);
         Task<TbUser> AddUser(TbUser user);
         Task<TbUser> UpdateUser(TbUser user);
-        void DeleteUser(decimal userId);
+        Task DeleteUser(decimal userId);
     }
 }

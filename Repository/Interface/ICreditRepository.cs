@@ -8,6 +8,6 @@ namespace TPC_Challenge_API_NET.Repository.Interface
         Task<TbCredit> GetCredit(decimal creditId);
         Task<TbCredit> AddCredit(TbCredit credit);
         Task<TbCredit> UpdateCredit(TbCredit credit);
-        void DeleteCredit(decimal creditId);
+        Task DeleteCredit(decimal creditId);
     }
 }

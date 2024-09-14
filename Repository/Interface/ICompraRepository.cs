@@ -8,6 +8,6 @@ namespace TPC_Challenge_API_NET.Repository.Interface
         Task<TbCompra> GetCompra(decimal compraId);
         Task<TbCompra> AddCompra(TbCompra compra);
         Task<TbCompra> UpdateCompra(TbCompra compra);
-        void DeleteCompra(decimal compraId);
+        Task DeleteCompra(decimal compraId);
     }
 }

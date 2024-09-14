@@ -108,9 +108,9 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await produtoRepository.GetProduto(id);
                 if (result == null) return NotFound($"Produto com id = {id} não encontrado");
 
-                produtoRepository.DeleteProduto(id);
+                await produtoRepository.DeleteProduto(id);
 
-                return result;
+                return Ok("Produto deletado com sucesso.");
             }
             catch (Exception)
             {

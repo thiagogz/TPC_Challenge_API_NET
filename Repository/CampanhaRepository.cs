@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TPC_Challenge_API_NET.Data;
 using TPC_Challenge_API_NET.Models;
 using TPC_Challenge_API_NET.Repository.Interface;
@@ -56,12 +57,12 @@ namespace TPC_Challenge_API_NET.Repository
             return null;
         }
 
-        public async void DeleteCampanha(decimal campanhaId)
+        public async Task DeleteCampanha(decimal campanhaId)
         {
             var result = await dbContext.Campanhas.FirstOrDefaultAsync(c => c.Campanhaid == campanhaId);
             if (result != null)
             {
-                dbContext.Set<TbCampanha>().Remove(result);
+                dbContext.Campanhas.Remove(result);
                 await dbContext.SaveChangesAsync();
             }
         }

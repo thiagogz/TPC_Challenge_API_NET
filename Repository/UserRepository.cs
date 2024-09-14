@@ -53,7 +53,7 @@ namespace TPC_Challenge_API_NET.Repository
             return null;
         }
 
-        public async void DeleteUser(decimal userId)
+        public async Task DeleteUser(decimal userId)
         {
             var result = await dbContext.Users.FirstOrDefaultAsync(u => u.Usersid == userId);
             if (result != null)

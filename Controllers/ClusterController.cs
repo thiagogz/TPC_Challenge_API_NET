@@ -108,9 +108,9 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await clusterRepository.GetCluster(id);
                 if (result == null) return NotFound($"Cluster com id = {id} não encontrado");
 
-                clusterRepository.DeleteCluster(id);
+                await clusterRepository.DeleteCluster(id);
 
-                return result;
+                return Ok("Cluster deletado com sucesso."); ;
             }
             catch (Exception)
             {

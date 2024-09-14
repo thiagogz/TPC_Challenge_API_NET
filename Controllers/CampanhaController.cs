@@ -68,11 +68,11 @@ namespace TPC_Challenge_API_NET.Controllers
 
                 var result = await campanhaRepository.AddCampanha(campanha);
 
-                return CreatedAtAction(nameof(GetCampanha), new { id = result.Campanhaid }, result);
+                return CreatedAtAction("GetCampanha", new { id = campanha.Campanhaid }, campanha);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao adicionar dados no banco de dados");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao adicionar dados no banco de dados: {ex.Message}");
             }
         }
 
@@ -108,9 +108,9 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await campanhaRepository.GetCampanha(id);
                 if (result == null) return NotFound($"Campanha com id = {id} não encontrada");
 
-                campanhaRepository.DeleteCampanha(id);
+                await campanhaRepository.DeleteCampanha(id);
 
-                return result;
+                return Ok("Campanha deletada com sucesso.");
             }
             catch (Exception)
             {

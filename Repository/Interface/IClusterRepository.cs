@@ -8,6 +8,6 @@ namespace TPC_Challenge_API_NET.Repository.Interface
         Task<TbCluster> GetCluster(decimal clusterId);
         Task<TbCluster> AddCluster(TbCluster cluster);
         Task<TbCluster> UpdateCluster(TbCluster cluster);
-        void DeleteCluster(decimal clusterId);
+        Task DeleteCluster(decimal clusterId);
     }
 }

@@ -48,7 +48,7 @@ namespace TPC_Challenge_API_NET.Repository
             return null;
         }
 
-        public async void DeletePonto(decimal pontoId)
+        public async Task DeletePonto(decimal pontoId)
         {
             var result = await dbContext.Pontos.FirstOrDefaultAsync(p => p.Pointid == pontoId);
             if (result != null)

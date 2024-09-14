@@ -41,17 +41,22 @@ namespace TPC_Challenge_API_NET.Repository
             return result.Entity;
         }
 
-        public async Task<TbCreditCompra> UpdateCreditCompra(TbCreditCompra creditCompra)
+        public async Task<TbCreditCompra> UpdateCreditCompra(decimal creditId, decimal compraId, TbCreditCompra creditCompra)
         {
             var result = await dbContext.CreditCompras
-                                        .FirstOrDefaultAsync(cc => cc.Creditid == creditCompra.Creditid && cc.Compraid == creditCompra.Compraid);
+                                        .FirstOrDefaultAsync(cc => cc.Creditid == creditId && cc.Compraid == compraId);
 
             if (result != null)
             {
+                dbContext.CreditCompras.Remove(result);
+                await dbContext.SaveChangesAsync();
+
                 result.Creditid = creditCompra.Creditid;
                 result.Compraid = creditCompra.Compraid;
                 result.Compra = creditCompra.Compra;
                 result.Credit = creditCompra.Credit;
+
+                dbContext.CreditCompras.Add(result);
 
                 await dbContext.SaveChangesAsync();
                 return result;
@@ -59,7 +64,7 @@ namespace TPC_Challenge_API_NET.Repository
             return null;
         }
 
-        public async void DeleteCreditCompra(decimal creditId, decimal compraId)
+        public async Task DeleteCreditCompra(decimal creditId, decimal compraId)
         {
             var result = await dbContext.CreditCompras
                                         .FirstOrDefaultAsync(cc => cc.Creditid == creditId && cc.Compraid == compraId);

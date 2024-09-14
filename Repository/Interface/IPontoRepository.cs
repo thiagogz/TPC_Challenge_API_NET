@@ -8,6 +8,6 @@ namespace TPC_Challenge_API_NET.Repository.Interface
         Task<TbPonto> GetPonto(decimal pontoId);
         Task<TbPonto> AddPonto(TbPonto ponto);
         Task<TbPonto> UpdatePonto(TbPonto ponto);
-        void DeletePonto(decimal pontoId);
+        Task DeletePonto(decimal pontoId);
     }
 }

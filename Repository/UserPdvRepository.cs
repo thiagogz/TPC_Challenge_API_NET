@@ -47,7 +47,7 @@ namespace TPC_Challenge_API_NET.Repository
                 result.Password = userPdv.Password;
                 result.Dataregistro = userPdv.Dataregistro;
                 result.Ativo = userPdv.Ativo;
-                result.Pdv = userPdv.Pdv; // Atualiza a loja associada
+                result.Pdvid = userPdv.Pdvid; // Atualiza a loja associada
 
                 await dbContext.SaveChangesAsync();
 
@@ -56,7 +56,7 @@ namespace TPC_Challenge_API_NET.Repository
             return null;
         }
 
-        public async void DeleteUserPdv(decimal userPdvId)
+        public async Task DeleteUserPdv(decimal userPdvId)
         {
             var result = await dbContext.UserPdvs
                 .FirstOrDefaultAsync(up => up.Userpdvid == userPdvId);

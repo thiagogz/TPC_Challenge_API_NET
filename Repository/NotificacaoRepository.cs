@@ -54,7 +54,7 @@ namespace TPC_Challenge_API_NET.Repository
             return null;
         }
 
-        public async void DeleteNotificacao(decimal notificacaoId)
+        public async Task DeleteNotificacao(decimal notificacaoId)
         {
             var notificacao = await dbContext.Notificacoes
                 .FirstOrDefaultAsync(n => n.Notificacoesid == notificacaoId);

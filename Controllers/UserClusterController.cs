@@ -16,7 +16,7 @@ namespace TPC_Challenge_API_NET.Controllers
         }
 
         /// <summary>
-        /// Retorna a tabela completa de relação entre usuários e clusteres
+        /// Retorna a tabela completa de clusters
         /// </summary>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TbUserCluster>>> GetUserClusters()
@@ -32,11 +32,8 @@ namespace TPC_Challenge_API_NET.Controllers
         }
 
         /// <summary>
-        /// Retorna a relação entre usuário e cluster com o id especificado
+        /// Retorna o cluster de determinado usuário com o id especificado
         /// </summary>
-        /// <remarks>
-        /// Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
-        /// </remarks>
         [HttpGet("{id:decimal}")]
         public async Task<ActionResult<TbUserCluster>> GetUserCluster(decimal id)
         {
@@ -54,7 +51,7 @@ namespace TPC_Challenge_API_NET.Controllers
         }
 
         /// <summary>
-        /// Inserção de uma nova relação entre usuário e cluster
+        /// Inserção de um novo cluster
         /// </summary>
         /// <response code="201">Retorna a relação entre ponto e compra criada</response>
         /// <response code="400">Se o Request for enviado nulo</response>
@@ -82,9 +79,6 @@ namespace TPC_Challenge_API_NET.Controllers
         /// <summary>
         /// Altera a relação entre usuário e cluster com o id especificado
         /// </summary>
-        /// <remarks>
-        /// Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
-        /// </remarks>
         [HttpPut("{id:decimal}")]
         public async Task<ActionResult<TbUserCluster>> UpdateUserCluster(decimal id, [FromBody] TbUserCluster userCluster)
         {
@@ -104,11 +98,8 @@ namespace TPC_Challenge_API_NET.Controllers
         }
 
         /// <summary>
-        /// Deleta a relação entre usuário e cluster com o id especificado
+        /// Deleta o cluster de determinado usuário com o id especificado
         /// </summary>
-        /// <remarks>
-        /// Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
-        /// </remarks>
         [HttpDelete("{id:decimal}")]
         public async Task<ActionResult<TbUserCluster>> DeleteUserCluster(decimal id)
         {
@@ -117,9 +108,9 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await userClusterRepository.GetUserCluster(id);
                 if (result == null) return NotFound($"UserCluster com id = {id} não encontrado");
 
-                userClusterRepository.DeleteUserCluster(id);
+                await userClusterRepository.DeleteUserCluster(id);
 
-                return result;
+                return Ok("Cluster de usuário deletado com sucesso.");
             }
             catch (Exception)
             {

@@ -57,7 +57,7 @@ namespace TPC_Challenge_API_NET.Repository
             return null;
         }
 
-        public async void DeleteProduto(decimal produtoId)
+        public async Task DeleteProduto(decimal produtoId)
         {
             var result = await dbContext.Produtos
                 .FirstOrDefaultAsync(p => p.Produtoid == produtoId);

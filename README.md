@@ -3,7 +3,8 @@
 ## Sumário
 - [Integrantes;](#integrantes)
 - [Arquitetura da API;](#arquitetura-da-api)
-- [Instruções para uso da aplicação.](#instruções-para-uso-da-aplicação)
+- [Instruções para uso da aplicação;](#instruções-para-uso-da-aplicação)
+- [Observações importantes.](#observações-importantes)
 
 ## Integrantes
 - Beatriz Lucas - RM99104;
@@ -54,3 +55,7 @@ Assim, escolhemos a arquitetura monolítica para garantir um desenvolvimento mais
     - Após inicializar a aplicação, uma página web será aberta no seu navegador padrão. Nela, você poderá visualizar a documentação da API, bem como realizar requisições para a mesma;
     - Para realizar a requisição desejada, basta clicar no endpoint desejado e, em seguida, no botão **`Try it out`**. Após isso, você poderá preencher os campos necessários para a requisição e, por fim, clicar no botão **`Execute`**.
 
+## Observações importantes
+Como as tabelas **`CreditCompra`** e **`PontosCompra`** são tabelas relacionais, elas não possuem Primary Keys. Dessa maneira, foi configurado para que a leitura delas seja feita a partir da combinação das duas chaves.\
+Dito isso, os métodos **`POST`** e **`PUT`** dessas tabelas funcionam inserindo a relação delas e apagando para substituir pela atualização solicitada, respectivamente.\
+Dessa maneira, após utilizar o método **`PUT`**, é necessário fazer a requisição por ID atualizada, inserindo os dois novos IDs.\

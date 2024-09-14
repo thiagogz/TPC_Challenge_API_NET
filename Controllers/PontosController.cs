@@ -108,9 +108,9 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await pontoRepository.GetPonto(id);
                 if (result == null) return NotFound($"Ponto com id = {id} não encontrado");
 
-                pontoRepository.DeletePonto(id);
+                await pontoRepository.DeletePonto(id);
 
-                return result;
+                return Ok("Pontos deletados com sucesso.");
             }
             catch (Exception)
             {

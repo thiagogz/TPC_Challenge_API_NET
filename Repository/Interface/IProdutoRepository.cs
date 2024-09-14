@@ -8,6 +8,6 @@ namespace TPC_Challenge_API_NET.Repository.Interface
         Task<TbProduto> GetProduto(decimal produtoId);
         Task<TbProduto> AddProduto(TbProduto produto);
         Task<TbProduto> UpdateProduto(TbProduto produto);
-        void DeleteProduto(decimal produtoId);
+        Task DeleteProduto(decimal produtoId);
     }
 }

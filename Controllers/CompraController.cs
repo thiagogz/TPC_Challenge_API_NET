@@ -108,9 +108,9 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await compraRepository.GetCompra(id);
                 if (result == null) return NotFound($"Compra com id = {id} não encontrada");
 
-                compraRepository.DeleteCompra(id);
+                await compraRepository.DeleteCompra(id);
 
-                return result;
+                return Ok("Compra deletada com sucesso.");
             }
             catch (Exception)
             {

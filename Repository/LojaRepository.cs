@@ -59,7 +59,7 @@ namespace TPC_Challenge_API_NET.Repository
             return null;
         }
 
-        public async void DeleteLoja(decimal lojaId)
+        public async Task DeleteLoja(decimal lojaId)
         {
             var result = await dbContext.Lojas.FirstOrDefaultAsync(l => l.Pdvid == lojaId);
             if (result != null)

@@ -332,20 +332,17 @@
         </member>
         <member name="M:TPC_Challenge_API_NET.Controllers.UserClusterController.GetUserClusters">
             <summary>
-            Retorna a tabela completa de relação entre usuários e clusteres
+            Retorna a tabela completa de clusters
             </summary>
         </member>
         <member name="M:TPC_Challenge_API_NET.Controllers.UserClusterController.GetUserCluster(System.Decimal)">
             <summary>
-            Retorna a relação entre usuário e cluster com o id especificado
+            Retorna o cluster de determinado usuário com o id especificado
             </summary>
-            <remarks>
-            Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
-            </remarks>
         </member>
         <member name="M:TPC_Challenge_API_NET.Controllers.UserClusterController.CreateUserCluster(TPC_Challenge_API_NET.Models.TbUserCluster)">
             <summary>
-            Inserção de uma nova relação entre usuário e cluster
+            Inserção de um novo cluster
             </summary>
             <response code="201">Retorna a relação entre ponto e compra criada</response>
             <response code="400">Se o Request for enviado nulo</response>
@@ -355,17 +352,11 @@
             <summary>
             Altera a relação entre usuário e cluster com o id especificado
             </summary>
-            <remarks>
-            Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
-            </remarks>
         </member>
         <member name="M:TPC_Challenge_API_NET.Controllers.UserClusterController.DeleteUserCluster(System.Decimal)">
             <summary>
-            Deleta a relação entre usuário e cluster com o id especificado
+            Deleta o cluster de determinado usuário com o id especificado
             </summary>
-            <remarks>
-            Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
-            </remarks>
         </member>
         <member name="M:TPC_Challenge_API_NET.Controllers.UserController.GetUsers">
             <summary>
@@ -450,6 +441,18 @@
             <summary>
             Deleta o usuáriopdv com o id especificado
             </summary>
+        </member>
+        <member name="T:TPC_Challenge_API_NET.Migrations.Teste">
+            <inheritdoc />
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Migrations.Teste.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Migrations.Teste.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:TPC_Challenge_API_NET.Migrations.Teste.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
         </member>
     </members>
 </doc>

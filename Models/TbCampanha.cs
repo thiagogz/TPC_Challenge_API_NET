@@ -15,11 +15,9 @@ public partial class TbCampanha
     public decimal Campanhaid { get; set; }
 
     [Column("MASTERID", TypeName = "NUMBER(38)")]
-    [JsonIgnore]
     public decimal Masterid { get; set; }
 
     [Column("CLUSTERID", TypeName = "NUMBER(38)")]
-    [JsonIgnore]
     public decimal Clusterid { get; set; }
 
     [Column("TITULO")]
@@ -42,9 +40,9 @@ public partial class TbCampanha
 
     [ForeignKey("Clusterid")]
     [InverseProperty("TbCampanhas")]
-    public virtual TbCluster Cluster { get; set; } = null!;
+    public virtual TbCluster? Cluster { get; set; } 
 
     [ForeignKey("Masterid")]
     [InverseProperty("TbCampanhas")]
-    public virtual TbUsermaster Master { get; set; } = null!;
+    public virtual TbUsermaster? Master { get; set; } 
 }

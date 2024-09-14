@@ -8,6 +8,6 @@ namespace TPC_Challenge_API_NET.Repository.Interface
         Task<TbUsermaster> GetUserMaster(decimal masterId);
         Task<TbUsermaster> AddUserMaster(TbUsermaster userMaster);
         Task<TbUsermaster> UpdateUserMaster(TbUsermaster userMaster);
-        void DeleteUserMaster(decimal masterId);
+        Task DeleteUserMaster(decimal masterId);
     }
 }

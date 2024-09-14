@@ -15,18 +15,16 @@ public partial class TbUserCluster
     public decimal Userclusterid { get; set; }
 
     [Column("CLUSTERID", TypeName = "NUMBER(38)")]
-    [JsonIgnore]
     public decimal Clusterid { get; set; }
 
     [Column("USERID", TypeName = "NUMBER(38)")]
-    [JsonIgnore]
     public decimal Userid { get; set; }
 
     [ForeignKey("Clusterid")]
     [InverseProperty("TbUserClusters")]
-    public virtual TbCluster Cluster { get; set; } = null!;
+    public virtual TbCluster? Cluster { get; set; }
 
     [ForeignKey("Userid")]
     [InverseProperty("TbUserClusters")]
-    public virtual TbUser User { get; set; } = null!;
+    public virtual TbUser? User { get; set; }
 }
