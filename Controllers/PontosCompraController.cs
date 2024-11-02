@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TPC_Challenge_API_NET.Models;
 using TPC_Challenge_API_NET.Repository;
 using TPC_Challenge_API_NET.Repository.Interface;
@@ -7,6 +8,7 @@ namespace TPC_Challenge_API_NET.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PontosCompraController : ControllerBase
     {
         private readonly IPontosCompraRepository pontosCompraRepository;
@@ -20,6 +22,7 @@ namespace TPC_Challenge_API_NET.Controllers
         /// Retorna a tabela completa de relação entre pontos e compras
         /// </summary>
         [HttpGet]
+         
         public async Task<ActionResult<IEnumerable<TbPontosCompra>>> GetPontosCompra()
         {
             try
@@ -39,6 +42,7 @@ namespace TPC_Challenge_API_NET.Controllers
         /// Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
         /// </remarks>
         [HttpGet("{compraId:decimal}/{pontoId:decimal}")]
+         
         public async Task<ActionResult<TbPontosCompra>> GetPontosCompra(decimal compraId, decimal pontoId)
         {
             try
@@ -46,7 +50,7 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await pontosCompraRepository.GetPontosCompraByIds(compraId, pontoId);
                 if (result == null) return NotFound();
 
-                return result;
+                return Ok(result);
             }
             catch (Exception)
             {
@@ -64,6 +68,7 @@ namespace TPC_Challenge_API_NET.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+         
         public async Task<ActionResult<TbPontosCompra>> CreatePontosCompra([FromBody] TbPontosCompra pontosCompra)
         {
             try
@@ -87,6 +92,7 @@ namespace TPC_Challenge_API_NET.Controllers
         /// Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
         /// </remarks>
         [HttpPut("{compraId:decimal}/{pontoId:decimal}")]
+         
         public async Task<ActionResult<TbPontosCompra>> UpdatePontosCompra(decimal compraId, decimal pontoId, [FromBody] TbPontosCompra pontosCompra)
         {
             try
@@ -111,6 +117,7 @@ namespace TPC_Challenge_API_NET.Controllers
         /// Devido a ausência de chave primária, esse método é chamado utilizando dois parâmetros
         /// </remarks>
         [HttpDelete("{compraId:decimal}/{pontoId:decimal}")]
+         
         public async Task<ActionResult<TbPontosCompra>> DeletePontosCompra(decimal compraId, decimal pontoId)
         {
             try

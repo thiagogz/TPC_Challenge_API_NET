@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TPC_Challenge_API_NET.Models;
 using TPC_Challenge_API_NET.Repository.Interface;
 
@@ -6,6 +7,7 @@ namespace TPC_Challenge_API_NET.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PontoController : ControllerBase
     {
         private readonly IPontoRepository pontoRepository;
@@ -19,6 +21,7 @@ namespace TPC_Challenge_API_NET.Controllers
         /// Retorna a tabela completa de pontos
         /// </summary>
         [HttpGet]
+         
         public async Task<ActionResult<IEnumerable<TbPonto>>> GetPontos()
         {
             try
@@ -35,6 +38,7 @@ namespace TPC_Challenge_API_NET.Controllers
         /// Retorna o ponto com o id especificado
         /// </summary>
         [HttpGet("{id:decimal}")]
+         
         public async Task<ActionResult<TbPonto>> GetPonto(decimal id)
         {
             try
@@ -42,7 +46,7 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await pontoRepository.GetPonto(id);
                 if (result == null) return NotFound();
 
-                return result;
+                return Ok(result);
             }
             catch (Exception)
             {
@@ -60,6 +64,7 @@ namespace TPC_Challenge_API_NET.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+         
         public async Task<ActionResult<TbPonto>> CreatePonto([FromBody] TbPonto ponto)
         {
             try
@@ -80,6 +85,7 @@ namespace TPC_Challenge_API_NET.Controllers
         /// Altera o ponto com o id especificado
         /// </summary>
         [HttpPut("{id:decimal}")]
+         
         public async Task<ActionResult<TbPonto>> UpdatePonto(decimal id, [FromBody] TbPonto ponto)
         {
             try
@@ -101,6 +107,7 @@ namespace TPC_Challenge_API_NET.Controllers
         /// Deleta o ponto com o id especificado
         /// </summary>
         [HttpDelete("{id:decimal}")]
+         
         public async Task<ActionResult<TbPonto>> DeletePonto(decimal id)
         {
             try

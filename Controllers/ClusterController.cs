@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TPC_Challenge_API_NET.Models;
 using TPC_Challenge_API_NET.Repository.Interface;
 
@@ -6,6 +7,7 @@ namespace TPC_Challenge_API_NET.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ClusterController : ControllerBase
     {
         private readonly IClusterRepository clusterRepository;
@@ -19,6 +21,7 @@ namespace TPC_Challenge_API_NET.Controllers
         /// Retorna a tabela completa de clusters
         /// </summary>
         [HttpGet]
+         
         public async Task<ActionResult<IEnumerable<TbCluster>>> GetClusters()
         {
             try
@@ -35,6 +38,7 @@ namespace TPC_Challenge_API_NET.Controllers
         /// Retorna o cluster com o id especificado
         /// </summary>
         [HttpGet("{id:decimal}")]
+         
         public async Task<ActionResult<TbCluster>> GetCluster(decimal id)
         {
             try
@@ -42,7 +46,7 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await clusterRepository.GetCluster(id);
                 if (result == null) return NotFound();
 
-                return result;
+                return Ok(result);
             }
             catch (Exception)
             {
@@ -60,6 +64,7 @@ namespace TPC_Challenge_API_NET.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+         
         public async Task<ActionResult<TbCluster>> CreateCluster([FromBody] TbCluster cluster)
         {
             try
@@ -80,6 +85,7 @@ namespace TPC_Challenge_API_NET.Controllers
         /// Altera o cluster com o id especificado
         /// </summary>
         [HttpPut("{id:decimal}")]
+         
         public async Task<ActionResult<TbCluster>> UpdateCluster(decimal id, [FromBody] TbCluster cluster)
         {
             try
@@ -101,6 +107,7 @@ namespace TPC_Challenge_API_NET.Controllers
         /// Deleta o cluster com o id especificado
         /// </summary>
         [HttpDelete("{id:decimal}")]
+         
         public async Task<ActionResult<TbCluster>> DeleteCluster(decimal id)
         {
             try
@@ -110,7 +117,7 @@ namespace TPC_Challenge_API_NET.Controllers
 
                 await clusterRepository.DeleteCluster(id);
 
-                return Ok("Cluster deletado com sucesso."); ;
+                return Ok("Cluster deletado com sucesso.");
             }
             catch (Exception)
             {

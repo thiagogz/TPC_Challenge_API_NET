@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TPC_Challenge_API_NET.Models;
 using TPC_Challenge_API_NET.Repository.Interface;
 
@@ -6,6 +7,7 @@ namespace TPC_Challenge_API_NET.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CampanhaController : ControllerBase
     {
         private readonly ICampanhaRepository campanhaRepository;

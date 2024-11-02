@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TPC_Challenge_API_NET.Models;
 using TPC_Challenge_API_NET.Repository.Interface;
 
@@ -6,6 +7,7 @@ namespace TPC_Challenge_API_NET.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CategoriaController : ControllerBase
     {
         private readonly ICategoriaRepository categoriaRepository;
@@ -101,6 +103,7 @@ namespace TPC_Challenge_API_NET.Controllers
         /// Deleta a categoria com o id especificado
         /// </summary>
         [HttpDelete("{id:decimal}")]
+         
         public async Task<ActionResult<TbCategoria>> DeleteCategoria(decimal id)
         {
             try

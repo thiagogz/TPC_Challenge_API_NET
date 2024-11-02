@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TPC_Challenge_API_NET.Models;
 using TPC_Challenge_API_NET.Repository.Interface;
 
@@ -6,6 +7,7 @@ namespace TPC_Challenge_API_NET.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UserPdvController : ControllerBase
     {
         private readonly IUserPdvRepository userPdvRepository;
@@ -19,6 +21,7 @@ namespace TPC_Challenge_API_NET.Controllers
         /// Retorna a tabela completa de usuáriospdvs
         /// </summary>
         [HttpGet]
+ 
         public async Task<ActionResult<IEnumerable<TbUserPdv>>> GetUserPdvs()
         {
             try
@@ -35,6 +38,7 @@ namespace TPC_Challenge_API_NET.Controllers
         /// Retorna o usuáriopdv com o id especificado
         /// </summary>
         [HttpGet("{id:decimal}")]
+         
         public async Task<ActionResult<TbUserPdv>> GetUserPdv(decimal id)
         {
             try
@@ -42,7 +46,7 @@ namespace TPC_Challenge_API_NET.Controllers
                 var result = await userPdvRepository.GetUserPdv(id);
                 if (result == null) return NotFound();
 
-                return result;
+                return Ok(result);
             }
             catch (Exception)
             {
@@ -60,6 +64,7 @@ namespace TPC_Challenge_API_NET.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+         
         public async Task<ActionResult<TbUserPdv>> CreateUserPdv([FromBody] TbUserPdv userPdv)
         {
             try
@@ -80,6 +85,7 @@ namespace TPC_Challenge_API_NET.Controllers
         /// Altera o usuáriopdv com o id especificado
         /// </summary>
         [HttpPut("{id:decimal}")]
+         
         public async Task<ActionResult<TbUserPdv>> UpdateUserPdv(decimal id, [FromBody] TbUserPdv userPdv)
         {
             try
@@ -101,6 +107,7 @@ namespace TPC_Challenge_API_NET.Controllers
         /// Deleta o usuáriopdv com o id especificado
         /// </summary>
         [HttpDelete("{id:decimal}")]
+         
         public async Task<ActionResult<TbUserPdv>> DeleteUserPdv(decimal id)
         {
             try
